@@ -23,3 +23,12 @@
   content: "|";
   padding-right: 0.3em;
 }
+.comments{
+  border-top: 1px solid #9d9d9d;
+}
+.post-comment, .new-post{
+  width: 100%;
+}
+.post-user-profile {
+  width: 50px;
+}

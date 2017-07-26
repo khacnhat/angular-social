@@ -1,0 +1,51 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h4>What???</h4>
+                </div>
+                <div class="panel-body">
+                    <textarea ng-model="newPost.content" class="new-post" placeholder="What's on your mind?"></textarea>
+                    <button ng-click="sendPost()">POST</button>
+                </div>
+            </div>
+            <div ng-repeat="post in posts" class="panel panel-default">
+                <div class="panel-heading">
+                    <div class="media">
+                        <div class="media-left">
+                            <a href="#">
+                                <img ng-src="assets/images/{{post.user.profile}}" class="media-object post-user-profile">
+                            </a>
+                        </div>
+                        <div class="media-body">
+                            <h4 class="media-heading">{{post.user.name}}</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div class="post-content">
+                        {{post.content}}
+                    </div>
+                    <div>
+                        <span ng-click="like(post)" class="glyphicon glyphicon-thumbs-up"></span>
+                        {{post.likes}} likes
+                    </div>
+                    <div class="comments">
+                        <a ng-show="post.comments.length > 3" href="javascript: void(0)" ng-click="showAllComments(post)">
+                            {{post.toggleComment?'show less comments':'show all comments'}}
+                        </a>
+                        <div ng-repeat="comment in post.comments">
+                            <div ng-hide="($index > 2) && !post.toggleComment">{{$index}} {{comment.content}}</div>
+                        </div>
+                    </div>
+                    <input ng-model="post.newComment" type="text" class="post-comment">
+                    <button ng-click="sendComment(post)">Send</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            Sidebar
+        </div>
+    </div>
+</div>
